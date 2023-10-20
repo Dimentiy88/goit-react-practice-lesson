@@ -5,5 +5,27 @@ const INITION_STATE = {
 };
 
 export const postDetailsReducer = (state = INITION_STATE, action) => {
-  return state;
+  // action -> { type: 'postDetails/setIsLoading', payload: false }
+  switch (action.type) {
+    case 'postDetails/setIsLoading': {
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+    }
+    case 'postDetails/setPostDetails': {
+      return {
+        ...state,
+        postDetailsData: action.payload,
+      };
+    }
+    case 'postDetails/setError': {
+      return {
+        ...state,
+        error: action.payload,
+      };
+    }
+    default:
+      return state;
+  }
 };
