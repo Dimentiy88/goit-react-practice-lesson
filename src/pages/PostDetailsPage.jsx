@@ -12,31 +12,33 @@ import Loader from 'components/Loader';
 import ErrorMessage from 'components/ErrorMessage';
 
 import { findPostById } from 'services/api';
+import { useSelector } from 'react-redux';
 
-const PostCommentsPage = lazy(() => import('pages/PostCommentsPage'))
+const PostCommentsPage = lazy(() => import('pages/PostCommentsPage'));
 
 const PostDetailsPage = () => {
   const { postId } = useParams();
   const location = useLocation();
   const backLinkHref = useRef(location.state?.from ?? '/');
 
-  const [postDetails, setPostDetails] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const postDetails = useSelector(state => state.postDetails.postDetailsData);
+  // const [postDetails, setPostDetails] = useState(null);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(null);
 
   useEffect(() => {
     if (!postId) return;
 
     const fetchAllPosts = async () => {
       try {
-        setIsLoading(true);
+        // setIsLoading(true);
         const postData = await findPostById(postId);
 
-        setPostDetails(postData);
+        // setPostDetails(postData);
       } catch (error) {
-        setError(error.message);
+        // setError(error.message);
       } finally {
-        setIsLoading(false);
+        // setIsLoading(false);
       }
     };
 
