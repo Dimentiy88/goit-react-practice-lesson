@@ -22,6 +22,8 @@ const PostDetailsPage = () => {
   const backLinkHref = useRef(location.state?.from ?? '/');
 
   const postDetails = useSelector(state => state.postDetails.postDetailsData);
+  const isLoading = useSelector(state => state.postDetails.isLoading);
+  const error = useSelector(state => state.postDetails.error);
   // const [postDetails, setPostDetails] = useState(null);
   // const [isLoading, setIsLoading] = useState(false);
   // const [error, setError] = useState(null);
